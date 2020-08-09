@@ -16,18 +16,17 @@ public class HashService {
 
     private Logger logger = LoggerFactory.getLogger(HashService.class);
 
-    public String getHashedValue(String data, String salt){
+    public String getHashedValue(String data, String salt) {
         byte[] hashedValue = null;
 
-        KeySpec spec = new PBEKeySpec(data.toCharArray(), salt.getBytes(),5000, 128);
+        KeySpec spec = new PBEKeySpec(data.toCharArray(), salt.getBytes(), 5000, 128);
         try {
-            SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-            hashedValue = factory.generateSecret(spec).getEncoded();
-        }
-        catch(InvalidKeySpecException | NoSuchAlgorithmException e) {
+          SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+          hashedValue = factory.generateSecret(spec).getEncoded();
+        } catch (InvalidKeySpecException | NoSuchAlgorithmException e) {
             logger.error(e.getMessage());
-
         }
+
         return Base64.getEncoder().encodeToString(hashedValue);
     }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -7,9 +7,6 @@
     </head>
     <body>
         <form th:object="${chatForm}" th:action="@{/chat}" action="#" method="POST">
-            <div>
-                <h3 th:text="Hello ${user.username}">Hello ${user.username}</h3>
-            </div>
             <div class="form-group">
                 <label for="messageText">Message Text:</label>
                 <input th:field="*{messageText}"id="messageText" type="text">
@@ -29,8 +26,8 @@
                 <input type="submit">
             </div>
         </form>
-        <div class="container" th:each="chatMessage : ${chatHistory}">
-            <span th:text="${chatMessage.username}">Username</span>: <span th:text="${chatMessage.messageText}">Hello, world!</span>
+        <div class="container" th:each="message : ${chatHistory}">
+            <span th:text="${message.username}">Username</span>: <span th:text="${message.messageText}">Hello, world!</span>
         </div>
     </body>
 </html>

@@ -27,28 +27,28 @@ public class MessageService {
     public void addMessage(ChatForm chatForm){
         Message newMessage = new Message();
         newMessage.setUsername(chatForm.getUsername());
-        String lowercaseMessage = chatForm.getMessageText().toLowerCase();
-        for (String bannedWord : bannedWords){
-            if(lowercaseMessage.contains(bannedWord)){
-                // add an error so that user knows their message was banned based on word list
-                break;
-            }
-            else {
+//        String lowercaseMessage = chatForm.getMessageText().toLowerCase();
+//        for (String bannedWord : bannedWords){
+//            if(lowercaseMessage.contains(bannedWord)){
+//                // add an error so that user knows their message was banned based on word list
+//                break;
+//            }
+//            else {
 
-                switch(chatForm.getMessageType()){
-                    case "Say":
-                        newMessage.setMessageText(chatForm.getMessageText());
-                        break;
-                    case "Shout":
-                        newMessage.setMessageText(chatForm.getMessageText().toUpperCase());
-                        break;
-                    case "Whisper":
-                        newMessage.setMessageText(lowercaseMessage);
-                        break;
-                }
-                messageMapper.addMessage(newMessage);
+            switch(chatForm.getMessageType()){
+                case "Say":
+                    newMessage.setMessageText(chatForm.getMessageText());
+                    break;
+                case "Shout":
+                    newMessage.setMessageText(chatForm.getMessageText().toUpperCase());
+                    break;
+                case "Whisper":
+                    newMessage.setMessageText(chatForm.getMessageText().toLowerCase());
+                    break;
             }
-        }
+            messageMapper.addMessage(newMessage);
+////            }
+//        }
     }
 
     public List<Message> getChatHistory(){

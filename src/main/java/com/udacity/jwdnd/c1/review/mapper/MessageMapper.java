@@ -16,6 +16,6 @@ public interface MessageMapper {
 
     @Insert("INSERT INTO MESSAGES(username, messagetext) VALUES(#{username}, #{messageText})")
     @Options(useGeneratedKeys = true, keyProperty = "messageId")
-    int addMessage(Message message);
+    int addMessage(Message newMessage);
 
 }
