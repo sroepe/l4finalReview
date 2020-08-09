@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/index.css}">
+
+    <title>Register</title>
+</head>
+<body>
+    <div id="signup-form">
+        <div class="form-group">
+            <label><a th:href="@{/login}">Back to Login</a></label>
+        </div>
+        <h1>Please register:</h1>
+
+        <form th:action="@{/signup}" action="#" method="POST" class="form-group">
+            <div id="success-msg" th:if="${signupSuccess}" class="alert alert-dark">
+                You successfully signed up! Please continue to the <a id="login-link" th:href="@{/login}">login</a> page.
+            </div>
+            <div id="error-msg" th:if="${signupError}" class="alert alert-danger">
+                <span th:text="${signupError}"></span>
+            </div>
+            <label for="inputFirstName">First Name:</label>
+            <input id="inputFirstName" type="input" class="form-control" placeholder="Enter First Name" maxlength="20" required>
+
+            <label for="inputLastName">Last Name:</label>
+            <input id="inputLastName" type="input" class="form-control" placeholder="Enter Last Name" maxlength="20" required>
+
+            <label for="inputUsername">Username:</label>
+            <input id="inputUsername" type="input" class="form-control" placeholder="Enter Username" maxlength="20" required>
+
+            <label for="inputPassword">Password:</label>
+            <input id="inputPassword" type="password" class="form-control" placeholder="Enter password" maxlength="20" required>
+
+            <button id="submit-button" type="submit">Register</button>
+
+        </form>
+    </div>
+</body>
+</html>
